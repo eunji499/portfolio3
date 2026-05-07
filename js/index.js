@@ -1,0 +1,217 @@
+// DOM 요소가 모두 로드된 후 실행
+document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. 순차적 등장 애니메이션 로직
+            // 화면에 나타나야 할 요소들을 모두 찾습니다.
+            const animatedElements = document.querySelectorAll('.animate-on-load');
+            
+            animatedElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, index * 150); 
+            });
+
+            
+            
+    const mobileMenuIcon = document.querySelector('.mobile-menu-icon'); 
+    const mobileFullMenu = document.getElementById('mobileFullMenu');   
+    const menuCloseBtn = document.getElementById('menuCloseBtn');       
+
+   
+    if (mobileMenuIcon && mobileFullMenu && menuCloseBtn) {
+        
+        // 1. 햄버거 아이콘을 클릭했을 때
+        mobileMenuIcon.addEventListener('click', () => {
+            mobileFullMenu.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        });
+
+        // 2. 닫기(X) 버튼을 클릭했을 때
+        menuCloseBtn.addEventListener('click', () => {
+            mobileFullMenu.classList.remove('active'); 
+            document.body.style.overflow = ''; 
+        });
+    } 
+
+
+
+
+
+// 1. 관찰 대상 및 옵션 설정
+const observerOptions = {
+  root: null, // 브라우저 뷰포트를 기준으로 감지
+  threshold: 0.15 // 요소가 15% 정도 보였을 때 실행
+};
+
+// 2. 실행할 콜백 함수 정의
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // 화면에 들어오면 'visible' 클래스 추가
+      entry.target.classList.add('visible');
+      // 한 번 나타난 후에는 관찰을 중단하고 싶다면 아래 주석 해제
+      // observer.unobserve(entry.target);
+    }
+  });
+};
+
+// 3. Observer 생성 및 실행
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+// 4. .reveal 클래스를 가진 모든 요소를 찾아 관찰 시작
+const revealElements = document.querySelectorAll('.reveal');
+revealElements.forEach(el => observer.observe(el));
+
+
+
+// 1. 각 슬라이드에 들어갈 데이터 배열 생성
+    const popupData = [
+        {
+            num: "1",
+            title: "나이키 포스",
+            desc: "나이키 에어 포스 1 '07 스타일링에 자연스럽게 어울리는 변하지 않는 기준을 제시하는 팝업 디자인입니다.",
+            time: "3 Hours"
+        },
+        {
+            num: "2",
+            title: "블랙프라이데이",
+            desc: "블랙프라이데이 프로모션을 위한 팝업 디자인으로, 어두운 배경과 핑크 네온 컬러를 활용해 강렬한 대비와 시각적 집중도를 극대화하였습니다. 중앙에는 택배 상자 모티프를 배치하여 즉각적인 구매 행동을 유도합니다.",
+            time: "2 Hours"
+        },
+        {
+            num: "3",
+            title: "크리스마스 스페셜",
+            desc: "크리스마스 시즌 한정 혜택을 강조하는 따뜻한 분위기의 디자인으로, 리본과 선물 상자를 활용해 연말의 설레는 분위기를 연출하였습니다.",
+            time: "4 Hours"
+        }
+    ];
+
+    // 2. Swiper 슬라이드 초기화 및 설정
+ // 2. Swiper 슬라이드 초기화 및 설정 (수정됨)
+    const popupSwiper = new Swiper('.popupSwiper', {
+        direction: 'vertical',
+        
+        // 🌟 핵심: 숫자가 아닌 'auto'를 주면 CSS에서 설정한 width/height를 그대로 존중합니다.
+        slidesPerView: 'auto', 
+        
+        centeredSlides: true,  
+        
+        // 🌟 핵심: 이미지 사이의 간격을 넉넉하게 주어 겹치지 않게 합니다.
+        spaceBetween: 50,      
+        
+        grabCursor: true,      
+        loop: true,            
+        autoplay: {
+            delay: 3000,       
+            disableOnInteraction: false, 
+        },
+        // 반응형 설정 (모바일 가로 모드)
+        breakpoints: {
+            270: {
+                direction: 'horizontal',
+                spaceBetween: 30, // 모바일은 화면이 좁으니 간격을 조금 줄입니다.
+            },
+            1061: {
+                direction: 'vertical',
+                spaceBetween: 50, // PC 세로 모드 간격
+            }
+        }
+    });
+
+    // 3. 슬라이드가 바뀔 때마다 우측 텍스트 데이터 업데이트
+    popupSwiper.on('slideChange', function () {
+        // 루프 모드일 때는 realIndex를 사용해야 정확한 순서를 가져옵니다.
+        const currentIndex = popupSwiper.realIndex; 
+        const currentData = popupData[currentIndex];
+
+        // HTML 요소들에 데이터 갈아끼우기
+        document.getElementById('dyn-num').innerText = currentData.num;
+        document.getElementById('dyn-title').innerText = currentData.title;
+        document.getElementById('dyn-desc').innerText = currentData.desc;
+        document.getElementById('dyn-time').innerText = currentData.time;
+    });
+
+    // 4. 컨트롤 버튼 기능 연결
+    document.getElementById('btn-prev').addEventListener('click', () => {
+        popupSwiper.slidePrev(); // 이전 슬라이드로 수동 전환
+    });
+    
+    document.getElementById('btn-next').addEventListener('click', () => {
+        popupSwiper.slideNext(); // 다음 슬라이드로 수동 전환
+    });
+
+    document.getElementById('btn-play').addEventListener('click', () => {
+        popupSwiper.autoplay.start(); // 자동 재생 시작
+    });
+
+    document.getElementById('btn-stop').addEventListener('click', () => {
+        popupSwiper.autoplay.stop(); // 녹화(정지) 버튼: 자동 재생 멈춤
+    });
+
+// ==========================================
+    // --- 🌟 배너 섹션 스와이퍼 로직 추가 ---
+    // ==========================================
+
+    // 1. 배너 슬라이드 데이터 배열
+    const bannerData = [
+        {
+            num: "1",
+            title: "아크네 스튜디오 스카프",
+            desc: "겨울을 위해 태어난 부드러운 모헤어 혼방 소재의 후디드 스카프로, 포근한 분위기를 연출하는 배너 디자인입니다. 상품의 질감을 강조했습니다."
+        },
+        {
+            num: "2",
+            title: "여름 시즌오프 세일",
+            desc: "시원한 블루 톤을 바탕으로 타이포그래피를 강조하여 세일 정보를 직관적으로 전달하는 디자인입니다."
+        },
+        {
+            num: "3",
+            title: "신규 코스메틱 런칭",
+            desc: "고급스러운 무드를 위해 차분한 배경과 세련된 빛 효과를 더해 신제품의 우아함을 표현한 배너입니다."
+        }
+    ];
+
+    // 2. 배너 스와이퍼 초기화
+    const bannerSwiper = new Swiper('.bannerSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000, // 4초마다 자동 넘어감
+            disableOnInteraction: false, 
+        },
+        // 🌟 진행률 바(프로그레스 바) 연결 설정
+        pagination: {
+            el: '.banner-pagination',
+            type: 'progressbar', // 점(bullets) 대신 바(bar) 형태로 설정
+        }
+    });
+
+    // 3. 배너 슬라이드가 넘어갈 때마다 텍스트 변경하기
+    bannerSwiper.on('slideChange', function () {
+        const currentIndex = bannerSwiper.realIndex;
+        const currentData = bannerData[currentIndex];
+
+        // 검은 상자 안의 텍스트와 숫자를 업데이트
+        document.getElementById('banner-dyn-num').innerText = currentData.num;
+        document.getElementById('banner-dyn-title').innerText = currentData.title;
+        document.getElementById('banner-dyn-desc').innerText = currentData.desc;
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ });
