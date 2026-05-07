@@ -168,6 +168,16 @@ revealElements.forEach(el => observer.observe(el));
             num: "3",
             title: "신규 코스메틱 런칭",
             desc: "고급스러운 무드를 위해 차분한 배경과 세련된 빛 효과를 더해 신제품의 우아함을 표현한 배너입니다."
+        },
+        {
+            num: "4",
+            title: "신규 코스메틱 런칭",
+            desc: "고급스러운 무드를 위해 차분한 배경과 세련된 빛 효과를 더해 신제품의 우아함을 표현한 배너입니다."
+        },
+        {
+            num: "5",
+            title: "신규 코스메틱 런칭",
+            desc: "고급스러운 무드를 위해 차분한 배경과 세련된 빛 효과를 더해 신제품의 우아함을 표현한 배너입니다."
         }
     ];
 
@@ -197,10 +207,74 @@ revealElements.forEach(el => observer.observe(el));
     });
 
 
+// ==========================================
+    // --- 🌟 포스터 섹션 클릭 인터랙션 로직 ---
+    // ==========================================
+    
+    // 화면에 있는 모든 포스터(.poster-item)를 가져옵니다.
+    const posterItems = document.querySelectorAll('.poster-item');
 
+    posterItems.forEach(item => {
+        item.addEventListener('click', () => {
+            
+            // 이미 열려있는 포스터를 다시 클릭한 경우 -> 닫기만 하고 종료
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                return;
+            }
 
+            // 1. 먼저 모든 포스터의 'active' 클래스를 제거해서 설명창을 다 닫습니다.
+            posterItems.forEach(p => p.classList.remove('active'));
+            
+            // 2. 지금 방금 클릭한 포스터에만 'active' 클래스를 붙여서 설명창을 엽니다.
+            item.classList.add('active');
+        });
+    });
 
+// ==========================================
+    // --- 🌟 상세페이지 클릭 모달(팝업) 기능 ---
+    // ==========================================
+    const detailCards = document.querySelectorAll('.detail-card');
+    const detailModal = document.getElementById('detailModal');
+    const modalImage = document.getElementById('modalImage');
+    
+    // 🌟 텍스트를 집어넣을 HTML 요소들을 추가로 가져옵니다
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    
+    const modalCloseBtn = document.querySelector('.modal-close-btn');
 
+    detailCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // HTML의 data- 속성에서 이미지 경로, 제목, 설명을 가져옵니다.
+            const fullImgSrc = card.getAttribute('data-detail');
+            const titleText = card.getAttribute('data-title');
+            const descText = card.getAttribute('data-desc');
+
+            // 🌟 가져온 데이터들을 모달 창 안에 쏙쏙 넣어줍니다.
+            modalImage.src = fullImgSrc;
+            modalTitle.innerText = titleText;
+            modalDesc.innerHTML = descText; // <br> 태그를 적용하기 위해 innerHTML 사용
+            
+            detailModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; 
+            
+            // 팝업 열 때 스크롤 위치를 맨 위로 초기화 (선택 사항)
+            document.querySelector('.modal-img-area').scrollTop = 0;
+        });
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+        detailModal.classList.remove('show');
+        document.body.style.overflow = 'auto'; 
+    });
+
+    detailModal.addEventListener('click', (e) => {
+        if (e.target === detailModal) {
+            detailModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
 
 
 
