@@ -61,6 +61,9 @@ html{
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            max-width: 1920px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         header {
@@ -133,7 +136,7 @@ html{
             width: 100%;
             max-width: 100%;
             text-align: left;
-            font-size: 25rem;
+            font-size: 20rem;
             text-transform: uppercase;
             letter-spacing: -2px;
             line-height: 1;
@@ -149,7 +152,7 @@ html{
         /*편지봉투 이미지 스타일 */
         .hero-envelope {
             position: absolute;
-            right: -4%; 
+            right: -3%; 
             bottom: 10%; 
             width: clamp(150px, 20vw, 300px); 
             z-index: 1; 
@@ -404,11 +407,9 @@ html{
 }
 
 .about-title {
-    font-size: 7.5rem;
+    font-size: 8rem;
     text-transform: uppercase;
     line-height: 0.8;
-    transform: scaleY(1.3);
-    transform-origin: bottom left;
     margin: 0;
     white-space: nowrap;
 }
@@ -686,9 +687,8 @@ html{
 
 
 .popup-main-title {
-    font-size: 7rem;
+    font-size: 8rem;
     font-weight: 300;
-    transform: scaleY(1.5);
     margin-bottom: 40px;
 }
 
@@ -787,10 +787,8 @@ html{
 
 /* 타이포그래피 */
 .banner-main-title {
-    font-size: 5rem;
+    font-size: 8rem;
     font-weight: 300;
-    transform: scaleY(1.5);
-    transform-origin: left;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
     color: #0C0C0C;
@@ -907,19 +905,16 @@ html{
 }
 
 .poster-main-title {
-    font-size: 4rem;
+    font-size: 8rem;
     font-weight: 300;
-    transform: scaleY(1.5);
-    transform-origin: top left;
-    line-height: 0.9;
     margin: 0;
 }
 
 .poster-intro {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #aaa;
     line-height: 1.5;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 
 .poster-wrapper {
@@ -1057,11 +1052,9 @@ html{
 }
 
 .detail-title {
-    font-size: 4rem;
+    font-size: 8rem;
     font-weight: 300;
-    transform: scaleY(1.5);
     transform-origin: left;
-    margin-bottom: 1.5rem;
     margin-top: 1rem;
     color: #0C0C0C;
 }
@@ -1142,12 +1135,13 @@ html{
    클릭 시 나타나는 팝업(모달) 창 CSS
    ======================================================================= */
 .modal-close-btn {
+    position: absolute;
+    top: 0%;
+    left: calc(100% - 40px);
+    color: #0C0C0C;
     font-size: 2rem;
-    color: #0c0c0c;
     cursor: pointer;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: end;
+    transition: background-color 0.3s ease;
 }
 
 .detail-modal {
@@ -1170,13 +1164,22 @@ html{
 }
 
 .modal-content-wrapper {
-    display: flex; 
+    position: relative;
+    display: flex;
+    width: 90%;
+    max-width: 1200px; 
+    height: 90vh; 
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    /* display: flex; 
     width: 90%;
     max-width: 1200px; 
     height: 90vh; 
     background: #f4f4f4;
     border-radius: 12px;
-    overflow: hidden; 
+    overflow: hidden;  */
 }
 
 .modal-img-area {
@@ -1201,7 +1204,7 @@ html{
 .modal-text-area h3 {
     font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin: 2rem 0 1rem 0;
     color: #111;
 }
 
@@ -1214,13 +1217,376 @@ html{
 
 
 
+/* =======================================================================
+   웹 디자인 (WEB DESIGN) 섹션 CSS
+   ======================================================================= */
+.web-design-section {
+    background-color: #0c0c0c; /* 짙은 다크그레이/블랙 배경 */
+    color: #ffffff;
+    padding: 10rem 5% 0 5%;
+    text-align: center; /* 모든 텍스트를 중앙 정렬 */
+}
+
+.web-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- 상단 타이틀 영역 --- */
+.web-main-title {
+    font-size: 8rem;
+    font-weight: 300;
+    transform-origin: bottom center;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.web-intro {
+    font-size: 0.95rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* --- 🌟 가로선과 숫자 배지 --- */
+.web-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 50px;
+    max-width: 800px; /* 가로선 최대 길이 */
+}
+
+/* flex를 활용해 숫자 양옆으로 선을 쫙 늘려줍니다 */
+.web-divider::before,
+.web-divider::after {
+    content: '';
+    flex: 1; /* 남은 공간을 모두 차지 */
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3); /* 반투명 흰색 선 */
+}
+
+.divider-badge {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 20px; /* 선과 숫자 사이의 여백 */
+}
+
+/* --- 기기별 해상도 안내 --- */
+.web-specs {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* 기기 정보 사이의 간격 */
+    margin-bottom: 80px;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spec-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.spec-value {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+/* --- 프로젝트 상세 정보 --- */
+.project-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.project-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    margin-bottom: 60px;
+}
+
+/* --- 버튼 영역 --- */
+.web-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 버튼 사이의 간격 */
+}
+
+.web-btn {
+    display: inline-block;
+    padding: 12px 60px; /* 시안처럼 둥글고 긴 알약 모양 */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* 버튼 마우스 오버 효과 (흰색 배경으로 반전) */
+.web-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* 🌟 모니터 양옆 끝까지 100% 꽉 채우는 마법의 코드 */
+.web-detail-image-wrap {
+    margin-top: 100px;
+    width: 100vw; /* 브라우저 화면 전체 너비 */
+    margin-left: calc(-50vw + 50%); /* 중앙 정렬을 유지하면서 양옆으로 강제로 늘림 */
+}
+
+.proj2{
+    margin-top: 10rem;
+}
+.web-detail-image-wrap {
+    margin-top: 5rem;
+    overflow: hidden;
+}
+
+/* picture 태그 안의 img 태그에도 동일하게 반응형 설정을 적용합니다 */
+.web-detail-image-wrap picture img {
+    /* width: 100%; */
+    height: auto;
+    /* display: block; */
+    margin: 0 auto;
+}
 
 
+/* =======================================================================
+   추가 프로젝트 (MORE PROJECTS) 섹션 CSS
+   ======================================================================= */
+.more-projects-section {
+    background-color: #f4f4f4; 
+    padding: 5rem 5% ;
+    max-width: 1920px;
+}
+
+/* --- 타이틀 및 구분선 --- */
+.more-title {
+    font-size: 8rem;
+    font-weight: 300;
+    color: #0c0c0c;
+    margin-bottom: 1rem;
+}
+
+.more-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #111; /* 얇고 까만 가로선 */
+    margin-bottom: 100px;
+}
+
+/* --- 원형 버튼 영역 --- */
+.circle-btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 두 원 사이의 간격 */
+}
+
+/* 원형 버튼 공통 스타일 */
+.circle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    background-color: #111; /* 까만색 원 */
+    color: #fff; /* 하얀색 글씨 */
+    border-radius: 50%; /* 완벽한 동그라미 만들기 */
+    text-decoration: none; /* 링크의 기본 밑줄 제거 */
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+    /* 부드러운 전환 효과 */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* 🌟 디테일: 오른쪽 버튼을 시안처럼 살짝 위로 올리기 */
+.btn-right {
+    transform: translateY(-40px);
+}
+
+/* 마우스 올렸을 때 (Hover) 효과 */
+.circle-btn:hover {
+    background-color: #333; /* 색상이 살짝 옅어짐 */
+}
+
+.btn-left:hover {
+    transform: scale(1.05); /* 왼쪽 버튼은 그냥 커짐 */
+}
+
+.btn-right:hover {
+    transform: translateY(-40px) scale(1.05); /* 오른쪽 버튼은 올라간 상태를 유지하며 커짐 */
+}
+
+/* =======================================================================
+   푸터 (FOOTER) 섹션 CSS
+   ======================================================================= */
+.footer-section {
+    background-color: #111111; /* 아주 어두운 검은색 배경 */
+    color: #ffffff;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden; /* 스크롤 텍스트가 밖으로 삐져나가지 않게 */
+}
+
+.footer-container {
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- 상단 장식 선 --- */
+.footer-lines {
+    width: 100%;
+    margin-bottom: 80px;
+}
+.footer-lines .line-thick { height: 12px; background-color: #fff; margin-bottom: 8px; }
+.footer-lines .line-medium { height: 5px; background-color: #fff; margin-bottom: 6px; }
+.footer-lines .line-thin { height: 2px; background-color: #fff; }
+
+/* --- 중앙 정보 영역 --- */
+.footer-info {
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.footer-slogan {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* 버튼 사이 간격 */
+    margin-bottom: 60px;
+}
+
+/* 둥근 테두리 연락처 버튼 */
+.contact-pill {
+    display: inline-block;
+    padding: 10px 50px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: monospace, sans-serif; /* 영문/숫자를 깔끔하게 */
+    transition: all 0.3s ease;
+}
+
+.contact-pill:hover {
+    background-color: #ffffff;
+    color: #111111;
+    border-color: #ffffff;
+}
+
+.footer-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-role {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    letter-spacing: 1px;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* ==========================================
+   🌟 하단 무한 스크롤 마키(Marquee) 애니메이션
+   ========================================== */
+.marquee-wrap {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* 텍스트 위쪽 얇은 선 */
+    overflow: hidden; /* 화면 밖으로 나가는 글자 숨기기 */
+    background-color: #0a0a0a;
+}
+
+.marquee-track {
+    display: flex;
+    width: fit-content;
+    /* 🌟 애니메이션 실행: 25초 동안 선형으로 무한 반복 */
+    animation: scroll-left 25s linear infinite; 
+}
+
+/* 텍스트 묶음 디자인 */
+.marquee-text {
+    display: flex;
+    white-space: nowrap; /* 줄바꿈 금지 */
+    font-size: 8rem; /* 엄청 큰 글씨 */
+    font-weight: 300;
+    color: #ffffff;
+    padding: 4rem 1rem 0; /* 위쪽 여백 */
+    
+    /* 🌟 시안처럼 글씨를 위아래로 길쭉하게 늘려줍니다 */
+    transform: scaleY(1.6); 
+    transform-origin: bottom;
+    
+    /* 단어 사이 간격 조정 */
+    word-spacing: 10px; 
+}
+
+/* 애니메이션 키프레임 */
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    /* 정확히 절반(텍스트 묶음 1개 너비)만큼 이동했을 때 0%로 순간이동하여 무한 반복착각 유발 */
+    100% { transform: translateX(-50%); } 
+}
 
 
-
-
-
+/* --- 모바일 반응형 --- */
+@media screen and (max-width: 768px) {
+    .footer-slogan {
+        font-size: 0.95rem;
+        word-break: keep-all; /* 단어 단위로 줄바꿈 */
+        line-height: 1.5;
+    }
+    
+    .marquee-text {
+        font-size: 6rem; /* 모바일에서는 글씨 크기 줄임 */
+        transform: scaleY(1.5);
+    }
+}
 
 
 
@@ -1236,9 +1602,10 @@ html{
 
 
 /* 반응형 디자인------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
-@media (max-width: 3680px) {
+@media (max-width: 5120px) {
     .mobile-menu-icon{
     display: none;}
+
 }
 @media (max-width: 1920px) {
     .hero-title {
@@ -1569,7 +1936,23 @@ html{
 .modal-text-area {
     flex: 2;
 }
-
+ .web-main-title {
+        font-size: 8rem;
+    }
+    .web-specs {
+        gap: 1.5rem; 
+    }
+    .project-title {
+        font-size: 1.5rem;
+    }
+    .web-btn-group {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .web-btn {
+        width: 100%; 
+        max-width: 300px;
+    }
    
 }
 @media (max-width: 576px) {
