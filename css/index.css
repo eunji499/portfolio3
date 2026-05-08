@@ -1371,10 +1371,11 @@ html{
 
 /* picture 태그 안의 img 태그에도 동일하게 반응형 설정을 적용합니다 */
 .web-detail-image-wrap picture img {
-    /* width: 100%; */
+    width: 100%;
     height: auto;
     /* display: block; */
     margin: 0 auto;
+    max-width: 1920px;
 }
 
 
@@ -1590,7 +1591,103 @@ html{
 
 
 
+/* =======================================================================
+   플로팅 스티키 버튼 CSS
+   ======================================================================= */
+/* 1. 전체 버튼 그룹 래퍼 (화면 우측 하단 고정) */
+.floating-wrap {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px); 
+    
+    transition: all 0.4s ease;
+}
 
+/* 1920px 이상 와이드 스크린에서 버튼 위치 조정 */
+@media (min-width: 1920px) {
+    .floating-wrap {
+        right: calc(50vw - 960px + 40px);
+    }
+}
+
+/* JS에서 .is-visible 클래스를 붙이면 화면에 나타남! */
+.floating-wrap.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* 2. 서브 메뉴 (Web, Figma 캡슐 버튼 그룹) */
+.floating-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px; /* 메인 버튼과의 간격 */
+    
+    /* 🌟 기본 상태: 숨겨져 있음 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* JS에서 .is-open 클래스를 붙이면 위로 솟아오름! */
+.floating-wrap.is-open .floating-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 개별 캡슐 버튼 디자인 */
+.float-pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 45px;
+    background-color: #f4f4f4; 
+    color: #111;
+    border: 1px solid #111;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.6rem;
+    transition: all 0.2s ease;
+}
+
+.float-pill:hover {
+    background-color: #111;
+    color: #fff;
+}
+
+/* 3. 메인 트리거 버튼 (까만 원형 Link) */
+.float-trigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 300;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+/* 메뉴가 열렸을 때 트리거 버튼 애니메이션 (옵션) */
+.floating-wrap.is-open .float-trigger {
+    background-color: #333; /* 열려있다는 시각적 피드백 */
+}
 
 
 

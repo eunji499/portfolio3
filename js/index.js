@@ -278,6 +278,69 @@ revealElements.forEach(el => observer.observe(el));
 
 
 
+    
+    // 화면에 있는 모든 프로젝트 컨테이너와 모든 플로팅 버튼 묶음을 가져옵니다.
+    const projects = document.querySelectorAll('.web-design-section .web-container');
+    const allFloatingBtns = document.querySelectorAll('.floating-wrap');
+    
+    // 클릭 이벤트: 어떤 트리거(Link 동그라미)를 누르든 자기 부모의 메뉴를 엽니다.
+    const triggers = document.querySelectorAll('.trigger-btn');
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            // 클릭한 동그라미의 부모(.floating-wrap)에 is-open 클래스를 토글
+            e.target.closest('.floating-wrap').classList.toggle('is-open');
+        });
+    });
+
+    // 바탕화면 클릭 시 열려있는 모든 메뉴 닫기
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.floating-wrap')) {
+            allFloatingBtns.forEach(btn => btn.classList.remove('is-open'));
+        }
+    });
+
+    // 🌟 스크롤 감지 및 버튼 교체 로직
+    if (projects.length > 0 && allFloatingBtns.length > 0) {
+        
+       // 🌟 3. 스크롤 위치 감지 및 버튼 교체 로직 (수정된 부분)
+        window.addEventListener('scroll', () => {
+            let activeBtnId = null; 
+
+            // 화면 높이의 20% 지점을 계산합니다. (위에서부터 20% 내려온 지점)
+            const triggerPoint = window.innerHeight * 0.1; 
+
+            // 1. 어떤 프로젝트 영역을 보고 있는지 판독합니다.
+            projects.forEach(project => {
+                // 각 프로젝트 컨테이너의 현재 화면상 위치 정보를 가져옵니다.
+                const rect = project.getBoundingClientRect();
+                
+                // [설명]
+                // rect.top: 화면 맨 위에서 프로젝트 맨 위까지의 거리
+                // rect.bottom: 화면 맨 위에서 프로젝트 맨 아래까지의 거리
+                
+                // 조건: 
+                // 1) 프로젝트의 시작점(Top)이 화면 20% 지점을 통과하여 더 위로 올라갔거나 (rect.top <= triggerPoint)
+                // 2) 프로젝트의 끝점(Bottom)이 아직 화면 20% 지점을 통과하기 전이라면 (rect.bottom >= triggerPoint)
+                // 현재 사용자는 이 프로젝트 영역의 핵심(20% 이상 진입한 상태)을 보고 있는 것입니다.
+                
+                if (rect.top <= triggerPoint && rect.bottom >= triggerPoint) {
+                    // 조건이 맞으면 HTML에 적어둔 data-btn 이름표를 가져옵니다.
+                    activeBtnId = project.getAttribute('data-btn'); 
+                }
+            });
+
+            // 2. 모든 플로팅 버튼을 확인하면서 맞게 켜고 끕니다. (이 부분은 이전과 동일합니다)
+            allFloatingBtns.forEach(btn => {
+                if (btn.id === activeBtnId) {
+                    btn.classList.add('is-visible');
+                } else {
+                    btn.classList.remove('is-visible');
+                    btn.classList.remove('is-open');
+                }
+            });
+        });
+    }
+
 
 
 
