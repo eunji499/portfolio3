@@ -1,19 +1,18 @@
-/* 웹 브라우저 전체 스크롤바 디자인 변경 (크롬, 엣지, 사파리 전용) */
+
 ::-webkit-scrollbar {
-    width: 10px; /* 스크롤바의 너비 */
+    width: 5px; 
 }
 
 ::-webkit-scrollbar-track {
-    background: #f4f4f4; /* 스크롤바가 굴러가는 트랙(바탕) 색상 */
+    background: #f4f4f4; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #111111; /* 🌟 움직이는 막대(스크롤바) 색상을 검정색으로! */
-    border-radius: 5px;  /* 막대의 모서리를 살짝 둥글게 */
+    background: #0C0C0C; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #333333; /* 스크롤바에 마우스를 올리면 살짝 옅어지도록 효과 */
+    background: #333333; 
 }
 
 
@@ -797,62 +796,42 @@ html{
     color: #0C0C0C;
 }
 .banner-intro {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #555;
     margin-bottom: 2rem;
     max-width: 400px;
     line-height: 1.5;
 }
 
-/* 🌟 배너 + 검은 상자를 묶는 래퍼 (가로 배치) */
-/* 🌟 배너 + 검은 상자를 묶는 래퍼 (가로 배치) */
 .banner-card-wrapper {
     display: flex;
     border: 1px solid #ccc;
     background-color: #fff;
     height: 450px; 
-    
-    /* 🌟 핵심 해결 코드: 이 테두리 박스 바깥으로 튀어나오는 모든 요소를 안 보이게 잘라냅니다! */
     overflow: hidden; 
 }
 
-/* 좌측 배너 이미지 영역 (70% 비율) */
-/* 좌측 배너 이미지 영역 (70% 비율) */
 .bannerSwiper {
     flex: 7;
     height: 100%;
     overflow: hidden;
-    
-    /* 🌟 핵심 해결 코드: Flexbox 안에서 Swiper가 화면 밖으로 밀고 나가는 것을 방지합니다 */
     min-width: 0; 
 }
-/* 좌측 배너 이미지 자체의 디자인 */
+
 .bannerSwiper img {
     width: 100%;
     height: 100%;
-    
-    /* 🌟 핵심 해결 코드: cover(꽉 채우기) 대신 contain(전체 보여주기)을 사용합니다! */
     object-fit: contain; 
-    
-    /* (선택 사항) 이미지가 작아서 양옆이나 위아래로 남는 빈 공간(여백)이 생길 때, 
-       그 공간을 채워줄 배경색을 지정해 주면 디자인이 훨씬 깔끔해집니다. */
-    background-color: #f4f4f4; /* 하얀색 배너들과 자연스럽게 어울리도록 흰색 지정 */
+    background-color: #f4f4f4; 
 }
 
-/* 우측 검은색 정보 상자 (30% 비율) */
-/* 우측 검은색 정보 상자 (30% 비율) */
 .banner-info-box {
     flex: 3;
-    background-color: #111;
+    background-color: #0C0C0C;
     color: #fff;
-    padding: 50px 40px;
-    
-    /* 기존에 있던 position: relative; 가 꼭 있어야 z-index가 작동합니다 */
+    padding: 2.5rem 2rem;
     position: relative; 
-    
-    /* 🌟 핵심 해결 코드: 상자의 층수를 높여서 슬라이드 이미지가 밑으로 지나가게 덮어버립니다! */
     z-index: 10; 
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -862,19 +841,19 @@ html{
     margin-bottom: 1rem;
 }
 .banner-info-desc {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #aaa;
-    line-height: 1.6;
+    line-height: 1.5;
     word-break: keep-all;
 }
 .banner-circle-num {
     position: absolute;
-    bottom: 30px;
+    bottom: 1.5rem;
     right: 30px;
     width: 30px;
     height: 30px;
     background-color: #fff;
-    color: #111;
+    color: #0C0C0C;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -883,25 +862,21 @@ html{
     font-size: 0.9rem;
 }
 
-/* 🌟 하단 프로그레스 바 디자인 */
 .banner-progress-container {
     position: relative;
-    height: 4px; /* 바의 두께 */
-    background-color: #ddd; /* 옅은 회색 바탕 선 */
+    height: 4px; 
+    background-color: #ddd; 
     margin-top: 40px;
 }
 .banner-pagination.swiper-pagination-progressbar {
-    background: transparent; /* Swiper 기본 배경 투명하게 */
+    background: transparent; 
 }
 .banner-pagination .swiper-pagination-progressbar-fill {
-    background-color: #0C0C0C; /* 차오르는 색상을 검정색으로 설정 */
+    background-color: #0C0C0C; 
 }
-/* 하단 프로그레스 바 껍데기 */
 .banner-pagination.swiper-pagination-progressbar {
-    background: #dddddd; /* 차오르지 않은 빈 바탕 부분 (연한 회색) */
+    background: #dddddd; 
 }
-
-/* 🌟 핵심: 차오르는 부분의 색상을 검정색으로 강제 변경 */
 .banner-pagination .swiper-pagination-progressbar-fill {
     background-color: #111111 !important; 
 }
@@ -909,12 +884,11 @@ html{
 
 /* --- POSTER SECTION ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
 .poster-section {
-    background-color: #0C0C0C; /* 어두운 배경 */
+    background-color: #0C0C0C; 
     color: #ffffff;
     padding: 5rem 5%;
     position: relative;
     
-    /* 🌟 마법의 가로선 배경: 이미지가 아닌 코드로 일정한 간격의 선을 그려줍니다 */
     background-image: repeating-linear-gradient(
         to bottom,
         transparent,
@@ -928,8 +902,8 @@ html{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 40px;
-    margin-bottom: 80px;
+    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
 .poster-main-title {
@@ -944,76 +918,54 @@ html{
 .poster-intro {
     font-size: 0.9rem;
     color: #aaa;
-    line-height: 1.6;
-    margin-top: 10px;
+    line-height: 1.5;
+    margin-top: 0.5rem;
 }
 
-/* 🌟 포스터 벽돌(Masonry) 레이아웃 설정 */
-/* 🌟 1. 완벽하게 꽉 차는 그리드 레이아웃 */
 .poster-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 정확히 3칸으로 나눔 */
-    gap: 30px; /* 포스터 사이의 상하좌우 간격 (원하는 대로 조절 가능) */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; 
     width: 100%;
-    
-    /* 포스터를 아래로 끌어내릴 것이므로, 하단이 잘리지 않게 여백을 넉넉히 줍니다 */
-    padding-bottom: 100px; 
+    padding-bottom: 5rem; 
 }
 
 .poster-item {
     position: relative;
     cursor: pointer;
-    /* grid 안에서는 높이와 너비가 자동으로 딱 맞게 떨어집니다 */
 }
 
-/* 이미지 설정: 크기가 같으므로 비율이 찌그러지거나 잘릴 일이 없습니다 */
 .poster-item img {
     width: 100%;
     height: auto; 
     display: block;
     border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* 은은한 그림자 추가 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
     transition: transform 0.3s ease;
 }
 
-/* ==========================================
-   🌟 2. 마법의 계단식 배치 (위에서 아래로 내려가는 구도)
-   ========================================== */
 
-/* 가운데 열 (2번째, 5번째, 8번째...) 포스터를 아래로 50px 내립니다 */
 .poster-item:nth-child(3n + 2) {
-    transform: translateY(50px);
+    transform: translateY(2.5rem);
 }
 
-/* 오른쪽 열 (3번째, 6번째, 9번째...) 포스터를 아래로 100px 내립니다 */
 .poster-item:nth-child(3n) {
-    transform: translateY(100px);
+    transform: translateY(5rem);
 }
 
-/* (선택) 마우스를 올렸을 때 포스터가 살짝 위로 떠오르는 효과 유지 */
 .poster-item:hover img {
-    transform: translateY(-5px);
+    transform: translateY(-0.3rem);
 }
 
 
-/* 동그라미 숫자 배지 */
-/* 동그라미 숫자 배지 */
 .poster-badge {
     position: absolute;
-    
-    /* 🚨 (수정 전) 
-    top: -15px;
-    right: -15px; 
-    */
-    
-    /* ✅ (수정 후) 마이너스 기호를 지워주세요! */
     top: 15px;   
     right: 15px; 
-    
     width: 35px;
     height: 35px;
     background-color: #ddd;
-    color: #111;
+    color: #0C0C0C;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -1024,53 +976,48 @@ html{
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* 설명 박스 (기본적으로는 숨겨져 있음) */
 .poster-info-box {
     position: absolute;
     top: 20px;
-    left: 80%; /* 이미지 우측에 치우치게 배치 */
+    left: 80%; 
     width: 280px;
-    background-color: #ffffff;
-    color: #111111;
-    padding: 25px;
+    background-color: #f4f4f4;
+    color: #0C0C0C;
+    padding: 1.2rem;
     border-radius: 4px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
     z-index: 10;
-    
-    /* 숨김 처리 */
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-20px); /* 살짝 왼쪽으로 밀어둠 (나타날 때 움직이는 효과를 위해) */
+    transform: translateX(-1rem); 
     transition: all 0.4s ease;
 }
 
 .poster-info-box h4 {
     font-size: 1.3rem;
-    margin-bottom: 15px;
+    margin-bottom: 0.8rem;
     font-weight: 800;
 }
 
 .poster-info-box p {
     font-size: 0.8rem;
     line-height: 1.6;
-    color: #444;
+    color: #0C0C0C;
 }
 
-/* 🌟 포스터가 클릭되어 'active' 클래스가 붙었을 때 박스 나타남 */
 .poster-item.active .poster-info-box {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0); /* 원래 자리로 부드럽게 미끄러지며 나타남 */
+    transform: translateX(0); 
 }
 
-/* 3번째 줄(오른쪽 끝)에 있는 포스터의 박스는 화면 밖으로 나갈 수 있으므로 위치 조정 */
 .poster-item:nth-child(3n) .poster-info-box {
     left: auto;
-    right: 0%; /* 우측 끝에서는 박스가 왼쪽으로 튀어나오게 설정 */
+    right: 0%; 
 }
 
 .poster-item.active {
-    z-index: 20; /* 다른 포스터들이 무조건 이 포스터 아래로 들어가게 됩니다 */
+    z-index: 20; 
 }
 .pc-version-area {
     display: block; 
@@ -1079,129 +1026,18 @@ html{
     display: none; 
 }
 
-/* --- 상세페이지 (DETAILED PAGE) 섹션 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-.detail-section {
-    background-color: #f4f5f7; /* 시안과 같은 아주 밝은 회푸른빛 배경 */
-    padding: 100px 5%;
-    position: relative;
-    overflow: hidden; /* 배경 이미지가 섹션 밖으로 삐져나가는 것 방지 */
-}
-
-/* 🌟 핵심 1: 배경 원형 PNG 이미지 꽉 채우기 */
-.detail-bg-img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 찌그러지지 않고 화면 꽉 채움 */
-    z-index: 1; /* 콘텐츠보다 뒤로 보냄 */
-    pointer-events: none; /* 마우스 방해 방지 */
-    opacity: 0.8; /* 필요시 투명도 조절 */
-}
-
-
-
-/* 타이포그래피 (기존 섹션과 통일) */
-.detail-title {
-    font-size: 4rem;
-    font-weight: 300;
-    letter-spacing: -2px;
-    transform: scaleY(1.5);
-    transform-origin: left;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    color: #111;
-}
-
-.detail-intro {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 60px;
-}
-
-/* 🌟 핵심 2: 3열 바둑판 그리드 레이아웃 */
-.detail-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* PC에서는 3칸! */
-    gap: 30px;
-}
-
-/* 개별 카드 디자인 */
-.detail-card {
-    background: #fff;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 마우스 올렸을 때 살짝 떠오르는 효과 */
-.detail-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-
-.card-img-box {
-    width: 100%;
-    aspect-ratio: 3 / 4; /* 시안처럼 세로로 약간 긴 비율 */
-    overflow: hidden;
-}
-
-.card-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.detail-card:hover .card-img-box img {
-    transform: scale(1.05); /* 사진 살짝 확대 효과 */
-}
-
-/* 카드 하단 흰색 정보 박스 */
-.card-info-box {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    background: #fff;
-    border-top: 1px solid #eee;
-}
-
-.card-text h4 {
-    font-size: 1rem;
-    font-weight: 800;
-    margin-bottom: 5px;
-    color: #111;
-}
-
-.card-text p {
-    font-size: 0.85rem;
-    color: #666;
-}
-
-.card-arrow {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #111;
-}
-
 /* =======================================================================
    상세페이지 (DETAILED PAGE) 섹션 전체 CSS
    ======================================================================= */
 
-/* --- 1. 섹션 기본 및 배경 레이아웃 --- */
 .detail-section {
-    background-color: #f4f5f7; /* 밝고 차분한 회푸른빛 배경 */
+    background-color: #f4f5f7; 
     padding: 5rem 5%;
     position: relative;
-    overflow: hidden; /* 배경 원형 이미지가 화면 밖으로 나가는 것 방지 */
+    overflow: hidden; 
 }
 
-/* 배경 원형 PNG 이미지 꽉 채우기 */
+
 .detail-bg-img {
     position: absolute;
     top: 101%;
@@ -1215,91 +1051,83 @@ html{
     opacity: 0.7;
 }
 
-/* 콘텐츠 컨테이너 (배경 위로 올라옴) */
 .detail-container {
     position: relative;
-    z-index: 2; /* 배경 이미지(1)보다 높은 층(2)에 배치 */
-   
+    z-index: 2; 
 }
 
 .detail-title {
     font-size: 4rem;
     font-weight: 300;
-    letter-spacing: -2px;
     transform: scaleY(1.5);
     transform-origin: left;
-    margin-bottom: 30px;
-    margin-top: 20px;
-    color: #111;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    color: #0C0C0C;
 }
 
 .detail-intro {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #555;
-    line-height: 1.6;
-    margin-bottom: 60px;
+    line-height: 1.5;
+    margin-bottom: 3rem;
 }
 
-/* --- 3. 카드 갤러리 (Grid 레이아웃) --- */
+
 .detail-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 🌟 기본 PC 화면: 3칸 바둑판 */
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem;
 }
 
-/* 개별 카드 전체 디자인 */
 .detail-card {
-    background: #fff;
+    background: #f4f4f4;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-/* 카드에 마우스를 올렸을 때 살짝 떠오르는 효과 */
 .detail-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-/* 카드 윗부분 (썸네일 이미지) */
 .card-img-box {
     width: 100%;
-    aspect-ratio: 3 / 4; /* 시안처럼 세로로 약간 긴 직사각형 비율 */
+    aspect-ratio: 3 / 4; 
     overflow: hidden;
 }
 
 .card-img-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 찌그러짐 없이 꽉 채우기 */
+    object-fit: cover; 
     transition: transform 0.4s ease;
 }
 
-/* 카드에 마우스 올리면 사진만 살짝 확대되는 효과 */
 .detail-card:hover .card-img-box img {
     transform: scale(1.05); 
 }
 
-/* 카드 아랫부분 (흰색 텍스트 정보창) */
 .card-info-box {
-    padding: 25px 20px;
+    padding: 1.2rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    background: #fff;
+    background: #ffffff;
     border-top: 1px solid #eee;
 }
 
 .card-text h4 {
     font-size: 1.1rem;
     font-weight: 800;
-    margin-bottom: 5px;
-    color: #111;
+    margin-bottom: 0.2rem;
+    color: #0C0C0C;
 }
 
 .card-text p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #666;
 }
 
@@ -1313,54 +1141,48 @@ html{
 /* =======================================================================
    클릭 시 나타나는 팝업(모달) 창 CSS
    ======================================================================= */
+.modal-close-btn {
+    font-size: 2rem;
+    color: #0c0c0c;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: end;
+}
 
-/* 모달 전체 까만 배경 (기본 숨김) */
 .detail-modal {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* 반투명 까만 배경 */
-    z-index: 9999; /* 화면 맨 앞으로 가져옴 */
+    background-color: rgba(0, 0, 0, 0.85); 
+    z-index: 9999; 
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* 숨김 처리 */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
 }
 
-/* JS에서 .show 클래스를 붙여주면 스르륵 나타남 */
 .detail-modal.show {
     opacity: 1;
     visibility: visible;
 }
 
-/* X 닫기 버튼 */
-.modal-close-btn {
-    position: absolute;
-    top: 20px; right: 30px;
-    font-size: 3rem; color: #fff;
-    cursor: pointer; z-index: 10000;
-}
-
-/* --- 모달 내부 도화지 (좌우 분할) --- */
 .modal-content-wrapper {
-    display: flex; /* 좌우로 나눔 */
+    display: flex; 
     width: 90%;
     max-width: 1200px; 
-    height: 90vh; /* 화면 높이의 90%까지만 차지 */
-    background: #fff;
+    height: 90vh; 
+    background: #f4f4f4;
     border-radius: 12px;
     overflow: hidden; 
 }
 
-/* ⬅️ 왼쪽: 상세페이지 원본 이미지 영역 (70%) */
 .modal-img-area {
     flex: 7;
-    overflow-y: auto; /* 🌟 사진이 길면 여기서 스크롤이 생김! */
-    background-color: #f4f4f4; /* 이미지 로딩 전 빈 배경색 */
+    overflow-y: auto;
+    background-color: #f4f4f4; 
 }
 
 .modal-img-area img {
@@ -1368,46 +1190,45 @@ html{
     display: block;
 }
 
-/* ➡️ 오른쪽: 디자인 기획 설명 텍스트 영역 (30%) */
 .modal-text-area {
     flex: 3;
-    padding: 50px 40px;
+    padding: 1rem 2rem;
     background-color: #fff;
     border-left: 1px solid #eee;
-    overflow-y: auto; /* 설명이 길어지면 스크롤 생성 */
+    overflow-y: auto; 
 }
 
 .modal-text-area h3 {
     font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     color: #111;
 }
 
 .modal-text-area p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #444;
-    word-break: keep-all; /* 단어 단위 줄바꿈 */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #0C0C0C;
+    word-break: keep-all; 
 }
 
-/* --- 모달 반응형 (모바일에서 상하 분할로 변경) --- */
-@media screen and (max-width: 900px) {
-    .modal-content-wrapper {
-        flex-direction: column; /* 가로(좌우) -> 세로(상하) 배치로 변경 */
-    }
-    
-    .modal-text-area {
-        flex: none; /* 고정 크기 해제 */
-        padding: 30px 20px;
-        border-left: none; /* 세로 배치이므로 왼쪽 선 제거 */
-        border-bottom: 1px solid #eee; /* 대신 아래쪽 선 추가 */
-    }
-    
-    .modal-img-area {
-        flex: 1; /* 남은 공간을 이미지가 다 차지하게 함 */
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1622,25 +1443,25 @@ html{
     
 /* --- 모바일 BANNER SECTION --- */
 .banner-card-wrapper {
-    flex-direction: column; /* 🌟 가로 배치를 세로 배치로 변경! */
-    height: auto; /* 내용물에 맞게 높이가 늘어나도록 설정 */
+    flex-direction: column; 
+    height: auto; 
 }
 
 /* 모바일에서의 이미지 높이 */
 .bannerSwiper {
     width: 100%;
-    height: 300px; /* 모바일 화면에 맞는 적당한 높이 */
+    height: 300px; 
 }
 
-/* 모바일에서의 검은 상자 여백 및 높이 */
+
 .banner-info-box {
     width: 100%;
     padding: 2rem 1rem;
-    padding-bottom: 4rem; /* 동그라미 숫자를 위해 하단 여백 추가 */
+    padding-bottom: 4rem; 
 }
 
 .banner-main-title {
-    font-size: 3.5rem; /* 모바일에서는 글씨 크기 약간 줄임 */
+    font-size: 3.5rem; 
 }
 }
 
@@ -1655,9 +1476,8 @@ html{
     flex-direction: column;
 }
 .pc-version-area { display: none !important; }
-    .mobile-version-area { display: block !important; }
+.mobile-version-area { display: block !important; }
 
-    /* 📱 모바일 포스터 래퍼 */
     .poster-wrapper-mobile {
         display: flex;
         flex-direction: column;
@@ -1665,35 +1485,30 @@ html{
         padding: 0 5%;
     }
 
-    /* 📱 개별 포스터 세트 (가로로 나란히 배치) */
     .poster-item-mobile {
         display: flex;
-        align-items: center; /* 수직 중앙 정렬 */
-        gap: 20px; /* 이미지와 텍스트 사이 간격 */
-        padding: 40px 0; /* 위아래 여백 넉넉히 */
+        align-items: center; 
+        gap: 1rem; 
+        padding: 2rem 0; 
         
     }
 
-    /* 마지막 아이템은 밑줄 제거 (깔끔하게) */
     .poster-item-mobile:last-child {
         border-bottom: none;
     }
 
-    /* 🌟 핵심 1: 짝수 번째 아이템은 좌우 순서를 뒤집어 줍니다 (지그재그 마법!) */
     .poster-item-mobile:nth-child(even) {
         flex-direction: row-reverse;
     }
 
-    /* 📱 이미지 박스와 텍스트 박스 비율 설정 (대략 4.5 : 5.5 비율) */
     .poster-img-box {
         width: 45%; 
-        position: relative; /* 동그라미 배지의 기준점 */
+        position: relative; 
     }
     .poster-text-box {
         width: 55%;
     }
 
-    /* 이미지 스타일 */
     .poster-img-box img {
         width: 100%;
         height: auto;
@@ -1701,28 +1516,26 @@ html{
         border-radius: 4px;
     }
 
-    /* 텍스트 스타일 */
     .poster-text-box h4 {
         font-size: 1.1rem;
-        margin-bottom: 15px;
+        margin-bottom: 0.8rem;
         font-weight: 800;
         color: #ffffff;
     }
     .poster-text-box p {
         font-size: 0.8rem;
-        line-height: 1.6;
-        color: #cccccc;
-        word-break: keep-all; /* 단어 단위로 줄바꿈 (읽기 편하게) */
+        line-height: 1.5;
+        color: #f4f4f4;
+        word-break: keep-all; 
     }
 
-    /* 🌟 핵심 2: 동그라미 숫자 배지 디자인 */
     .m-badge {
         position: absolute;
         top: -10px;
         width: 26px;
         height: 26px;
-        background-color: #dddddd;
-        color: #111111;
+        background-color: #f4f4f4;
+        color: #0C0C0C;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -1731,16 +1544,10 @@ html{
         font-weight: bold;
         z-index: 5;
     }
+    .detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+}
 
-    /* 홀수 번째 (이미지가 왼쪽): 배지를 오른쪽 위로 */
-    .poster-item-mobile:nth-child(odd) .m-badge {
-        right: -10px;
-    }
-    
-    /* 짝수 번째 (이미지가 오른쪽): 배지를 왼쪽 위로 */
-    .poster-item-mobile:nth-child(even) .m-badge {
-        left: -10px;
-    }
 }
 
 @media (max-width: 840px) {
@@ -1755,6 +1562,12 @@ html{
 @media (max-width: 768px) {
 .popup-section {
     gap: 18rem;
+}
+.modal-content-wrapper {
+    flex-direction: column-reverse;
+}
+.modal-text-area {
+    flex: 2;
 }
 
    
@@ -1792,6 +1605,9 @@ html{
 .about-text-wrap {
     align-items: flex-start;
     flex-direction: column;
+}
+.detail-grid {
+    grid-template-columns: repeat(1, 1fr);
 }
 }
 
