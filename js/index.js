@@ -31,6 +31,33 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileFullMenu.classList.remove('active'); 
             document.body.style.overflow = ''; 
         });
+
+        // 3. 모바일 메뉴 리스트의 li 항목을 클릭했을 때 메뉴 닫기
+        const mobileMenuItems = mobileFullMenu.querySelectorAll('.mobile-menu-list li a');
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileFullMenu.classList.remove('active'); 
+                document.body.style.overflow = ''; 
+            });
+        });
+
+        // 4. PC 드롭다운 메뉴 항목 클릭 시 메뉴 닫기
+        const pcDropdownWrapper = document.querySelector('.dropdown-wrapper');
+        const pcDropdownLinks = document.querySelectorAll('.dropdown-wrapper .dropdown-list a');
+        if (pcDropdownWrapper) {
+            pcDropdownLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    pcDropdownWrapper.classList.add('closed');
+                });
+            });
+
+            const headerElement = pcDropdownWrapper.closest('header');
+            if (headerElement) {
+                headerElement.addEventListener('mouseenter', () => {
+                    pcDropdownWrapper.classList.remove('closed');
+                });
+            }
+        }
     } 
 
 

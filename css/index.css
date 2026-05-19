@@ -20,6 +20,8 @@
 
 html{
     font-family: 'Pretendard';
+    scroll-behavior: smooth; 
+
 }
 @media (max-width: 3680px) {
    html{
@@ -268,6 +270,10 @@ html{
         header:hover .dropdown-wrapper {
             transform: translateY(0);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+
+        .dropdown-wrapper.closed {
+            transform: translateY(-100%) !important;
         }
 
         .dropdown-list {
@@ -1925,7 +1931,7 @@ html{
 }
 
 .banner-main-title {
-    font-size: 3.5rem; 
+    font-size: 8rem; 
 }
 }
 
@@ -2021,17 +2027,24 @@ html{
     .hero-title {
         margin-top: 2rem;
     }
+    .popupSwiper .swiper-slide {
+    width: 420px !important;
+    height: 575px !important;
+}
+.popup-section {
+    gap: 8rem;
+}
 
 }
 @media (max-width: 768px) {
 .popup-section {
-    gap: 18rem;
+    gap: 6rem;
 }
 .modal-content-wrapper {
     flex-direction: column-reverse;
 }
 .modal-text-area {
-    flex: 2;
+    flex: 4;
 }
  .web-main-title {
         font-size: 8rem;
@@ -2050,7 +2063,22 @@ html{
         width: 100%; 
         max-width: 300px;
     }
-   
+    .float-trigger {
+    width: 60px;
+    height: 60px;   
+}
+ .floating-wrap {
+    right: 0px; 
+}
+.popupSwiper .swiper-slide {
+    width: 390px !important;
+    height: 505px !important;
+}
+.float-pill {
+    width: 73px;
+    height: 28px;
+    margin-right: 0.5rem;
+}
 }
 @media (max-width: 576px) {
  
@@ -2063,13 +2091,17 @@ html{
     }
 
 .popupSwiper .swiper-slide {
-    width: 320px !important;
-    height: 480px !important;
+    width: 290px !important;
+    height: 405px !important;
 }
 .popup-section {
-    gap: 7rem;
+    gap: 0rem;
 }
-
+.circle-btn {
+    width: 180px;
+    height: 180px;
+   
+}
 }
 @media (max-width: 530px) {
     .hero-section img{
@@ -2096,6 +2128,28 @@ html{
 @media (max-width: 430px) {
 .hero-title {
     font-size: 16rem;
+}
+    .float-trigger {
+    width: 50px;
+    height: 50px;   
+}
+.banner-main-title {
+    font-size: 6rem;
+}
+.poster-main-title {
+    font-size: 6rem;
+}
+.detail-title {
+    font-size: 6rem;
+}
+.web-main-title {
+    font-size: 6rem;
+}
+.popup-main-title {
+    font-size: 6rem;
+}
+.more-title {
+    font-size: 6rem;
 }
 }
 
